@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,24 @@
   <title>Library</title>
 
   <link rel="stylesheet" href="assets/CSS/style.css">
-  <script src="assets/JS/script.js"></script>
+  <script src="assets/JS/script.js" defer></script>
 </head>
+
 <body>
-  <div id="library"></div>
+  <section>
+    <form action="#" method="get" name="submitBook">
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title">
+
+      <label for="author">pages</label>
+      <input type="text" id="author" name="author">
+
+      <label for="pages">Pages</label>
+      <input type="number" id="pages" name="pages">
+
+      <button type="submit">Submit</button>
+    </form>
+  </section>
 </body>
+
 </html>
