@@ -1,0 +1,67 @@
+
+/* || CSS variables */
+:root {
+  /* colors */
+  --primary-dark: #0f172a;
+  --primary-light: #cbd5e1;
+}
+
+/* || Base CSS */
+body {
+  background: var(--primary-dark);
+  color: var(--primary-light);
+}
+
+
+/* || Custom CSS */
+.container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: 
+    "header header"
+    "main  sidebar"
+    "footer footer";
+  
+  max-width: 1600px;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  grid-area: header;
+  border: 1px solid;
+}
+
+.main {
+  grid-area: main;
+  border: 1px solid red;
+}
+
+.sidebar {
+  border: 1px solid yellow;
+}
+
+.footer {
+  grid-area: footer;
+  border: 1px dashed blue;
+}
+
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas: 
+    "header"
+    "sidebar"
+    "main"
+    "footer";
+  }
+
+  .header {
+    justify-content: flex-start;
+  }
+}
