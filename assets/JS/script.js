@@ -13,15 +13,13 @@ function Book (title, author, pages, status) {
 }
 
 
-
-
 function addBookToLibrary() {
   const newBook = Object.create(Book.prototype);
   newBook.title = document.querySelector('[name="title"]').value;
   newBook.author = document.querySelector('[name="author"]').value;
   newBook.pages = document.querySelector('[name="pages"]').value;;
   /* newBook.status = document.querySelector('[name="status"]').value;; */
-  
+
   return myLibrary.push(newBook)
 }
 
