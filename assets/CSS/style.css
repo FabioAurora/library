@@ -188,7 +188,7 @@ a {
 
 .nav {
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 .nav__brand {
@@ -197,14 +197,14 @@ a {
 }
 
 .nav__brand-icon {
-  width: 54px;
+  width: 100px;
 }
 
 .nav__brand-title {
   font-weight: 700;
   text-transform: uppercase;
   font-size: 2rem;
-  color: #ff7586;
+  color: #dfa95f;
 }
 
 .add__book-ctn {
