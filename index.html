@@ -29,6 +29,23 @@
 </head>
 
 <body>
+
+  <section data-modal-new class="modal-wrap display-none">
+    <div class="modal">
+      <div class="modal__left">
+        <img src="assets/images/books-removebg-preview.png" alt="">
+      </div>
+      <div class="modal__right">
+        <i data-close-modal class="fa-solid fa-x close-btn"></i>
+        <form action="#" method="get">
+          <div class="form__input">
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <header class="header">
 
     <nav class="nav center">
@@ -57,7 +74,7 @@
 
     <div class="add__book-ctn center">
       <p class="add__book">Add Book</p>
-      <a href="#" class="plus text-color-accent"><i class="fa-regular fa-plus"></i></a>
+      <a data-open-modal href="#" class="plus text-color-accent modal-button"><i class="fa-regular fa-plus"></i></a>
     </div>
     
     <div class="bookshelf-ctn center">
@@ -66,28 +83,6 @@
 
       </div>
     </div>
-
-   <!--  <div class="modal__ctn">
-      <div class="modal">
-        <div class="modal__bg">
-          <form action="/">
-            <div>
-              <label for="title">Title</label>
-              <input type="text" id="title">
-            </div>
-
-            <div>
-              <label for="author">Author</label>
-              <input type="text" id="author">
-            </div>
-          </form>
-          <div class="modal__image">
-
-          </div>
-        </div>
-      </div>
-    </div> -->
-
   </main>
 
   <footer class="footer">
@@ -98,3 +93,4 @@
 </body>
 
 </html>
+
