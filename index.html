@@ -30,19 +30,42 @@
 
 <body>
 
-  <section data-modal-new class="modal-wrap display-none">
-    <div class="modal">
+  <section data-modal-new class="modal hide">
+    <div data-modal-content class="modal__content">
       <div class="modal__left">
-        <img src="assets/images/books-removebg-preview.png" alt="">
+        <img class="book__img" src="assets/images/books-removebg-preview.png" alt="">
       </div>
       <div class="modal__right">
-        <i data-close-modal class="fa-solid fa-x close-btn"></i>
-        <form action="#" method="get">
-          <div class="form__input">
 
-          </div>
+        <form action="#" method="get">
+
+          <fieldset>
+            <div class="form__group">
+              <label for="title">Book Title</label>
+              <input type="text" id="title" required>
+            </div>
+            <div class="form__group">
+              <label for="author">Author</label>
+              <input type="text" id="author" required>
+            </div>
+            <div class="form__group">
+              <label for="status">Book Status</label>
+              <select name="status" id="status" required>
+                <option selected disabled value="">Select</option>
+                <option value="reading">Reading</option>
+                <option value="finished">Finished</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <label for="rating">Rating</label>
+              <input type="number" name="rating" id="rating" step="0.1" max="5" placeholder="rate 1 - 5" >
+            </div>
+          </fieldset>
+          <button class="form__button" type="submit">add book</button>
+
         </form>
       </div>
+      <i data-close-modal class="fa-solid fa-x close-btn"></i>
     </div>
   </section>
 
@@ -61,7 +84,7 @@
       
       <div class="nav__button-ctn">
         <div class="nav__button-gradient">
-          <a class="nav__button" href="#">Get Started</a>
+          <a data-open-modal class="nav__button" href="#">Add Book</a>
         </div>
       </div>
 
@@ -70,19 +93,10 @@
   </header>
 
   <main class="main center">
-    <h1 class="main__title center">You can add your <span class="abrev">favourite</span> <span class="text-color-accent">books</span></h1>
-
-    <div class="add__book-ctn center">
-      <p class="add__book">Add Book</p>
-      <a data-open-modal href="#" class="plus text-color-accent modal-button"><i class="fa-regular fa-plus"></i></a>
-    </div>
+    <h1 class="main__title center">You can add your <span class="underline">favourite</span> <span class="text-color-accent">books</span></h1>
     
-    <div class="bookshelf-ctn center">
-      
-      <div class="bookself">
-
-      </div>
-    </div>
+    <div class="bookshelf-ctn center"></div>
+    <div class="blob"></div>
   </main>
 
   <footer class="footer">
