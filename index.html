@@ -96,7 +96,16 @@
     <h1 class="main__title center">You can add your <span class="underline">favourite</span> <span class="text-color-accent">books</span></h1>
     
     <div class="bookshelf-ctn center"></div>
-    <div class="blob"></div>
+
+    <div data-book-delete class="delete__modal hide">
+      <div class="delete__modal__content">
+        <h2>Are you sure you want to delete this book?</h2>
+        <div class="delete__modal-btns">
+          <button data-cancel-btn class="cancel">cancel</button>
+          <button data-delete-btn class="delete">delete</button>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer class="footer">
