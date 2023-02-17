@@ -316,7 +316,7 @@ select {
 .bookshelf-ctn {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   max-width: 100%;
 }
 
@@ -325,7 +325,7 @@ select {
   background: rgb(31 31 71 / .5);
   padding: 1rem 1rem 1.5rem 1rem;
   border-radius: 10px;
-  max-width: 190px;
+  max-width: 240px;
   transform: perspective(588px);
   transform-style: preserve-3d;
   transition: transform 500ms cubic-bezier(.165, .84, .44, 1), -webkit-transform 500ms cubic-bezier(.165, .84, .44, 1);
@@ -349,10 +349,19 @@ select {
   word-wrap: break-word;
 }
 
-.author {
+.author-container {
+  display: flex;
+  gap: 1rem;
+}
+.author, .book-date {
   font-size: .8rem;
   font-weight: 700;
   color: var(--accent-clr-grey);
+}
+
+.book-date {
+  border-left: 1px solid;
+  padding-left: .5rem;
 }
 
 .btn {
@@ -364,6 +373,7 @@ select {
   font-size: .8rem;
   font-weight: 700;
 }
+
 .btn-delete {
   padding: .3rem 1rem;
   font-size: .9rem;
@@ -378,9 +388,53 @@ select {
 .status__group {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: .5rem;
+  margin-bottom: .5rem;
   padding: .2rem;
+}
+
+/* Rating Starts */
+.stars-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+  gap: .5rem;
+  margin-bottom: .8rem;
+}
+.stars-outer {
+  position: relative;
+  display: inline-block;
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-outer::before {
+  content: '\f005 \f005 \f005 \f005 \f005';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 300;
+  color: #ccc;
+}
+
+.stars-inner::before {
+  content: '\f005 \f005 \f005 \f005 \f005';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: #f8ce0b;
+}
+
+.number-rating {
+  align-self: flex-end;
+}
+
+.rating__input {
+  width: 100%;
 }
 
 /* || Modal for deleting the book */
@@ -424,6 +478,10 @@ select {
 .delete {
   background-color: #ED5E68;
   color: var(--primary-light);
+}
+
+.book-title {
+  color: var(--accent-clr-green);
 }
 
 

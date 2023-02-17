@@ -58,7 +58,8 @@
             </div>
             <div class="form__group">
               <label for="rating">Rating</label>
-              <input type="number" name="rating" id="rating" step="0.1" max="5" placeholder="rate 1 - 5" >
+              <input type="number" name="rating" id="rating" class="rating__input" step="0.1" max="5" min="1" placeholder="Rate 1 - 5" >
+              <span>* can use decimals.</span>
             </div>
           </fieldset>
           <button class="form__button" type="submit">add book</button>
@@ -99,7 +100,7 @@
 
     <div data-book-delete class="delete__modal hide">
       <div class="delete__modal__content">
-        <h2>Are you sure you want to delete this book?</h2>
+        <h2>Are you sure you want to delete <span class="book-title"></span>?</h2>
         <div class="delete__modal-btns">
           <button data-cancel-btn class="cancel">cancel</button>
           <button data-delete-btn class="delete">delete</button>

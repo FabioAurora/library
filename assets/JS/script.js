@@ -1,6 +1,6 @@
 'use strict';
 
-/* || modal */
+/* || Form modal */
 const modal = document.querySelector('[data-modal-new]');
 
 function hideModal() {
@@ -46,33 +46,8 @@ document.addEventListener('keydown', (e) => {
     hideModal();
   }
 })
+/* ******************************************************************* */
 
-
-/* testing */
-const bookStatus = document.querySelector('#status');
-const booRating = document.querySelector('#rating');
-
-let selectedBook;
-
-//select book status
-bookStatus.addEventListener('change', (e) => {
-  selectedBook = e.target.value;
-  if (selectedBook === 'Need to start') {
-    booRating.disabled = true;
-  } else {
-    booRating.disabled = false;
-  }
-})
-
-// Book rating
-booRating.addEventListener('blur', (e) => {
-  const rating = e.target.value;
-  if (rating > 5) {
-    alert('Please rate from 1 to 5');
-    return;
-  }
-  // to be continued
-})
 
 /* ||  book display section*/
 const titleInput = document.querySelector('#title');
@@ -87,6 +62,10 @@ form.addEventListener('submit', (e) => {
   hideModal();
   reset.formReset();
 })
+
+
+
+/* LIBRARY */
 // will store all the created books
 let myLibrary = [];
 
@@ -95,8 +74,9 @@ function Book(title, author, status, rating) {
   this.title = title;
   this.author = author;
   this.status = status;
-  this.rating = rating;
+  this.rating = rating
 }
+
 Book.prototype.toggleRead = function () {
   this.status = this.status === 'reading' ? 'finished' : 'reading';
 }
@@ -135,7 +115,7 @@ const cancelButton = document.querySelector('[data-cancel-btn]')
 
 deleteButton.addEventListener('click', () => {
   const index = deleteButton.getAttribute('data-index');
-  removeBook(index);
+  deleteBook(index);
   hideDeleteModal();
 })
 
@@ -158,6 +138,11 @@ function hideDeleteModal() {
 
 }
 
+// total number of stars to be used in calculation
+const starsTotal = 5
+
+const bookTitle = document.querySelector('.book-title');
+
 // displaying the books
 function displayBooks() {
   let bookShelf = document.querySelector('.bookshelf-ctn ');
@@ -171,10 +156,14 @@ function displayBooks() {
     // Book elements
     let title = document.createElement('h2');
     title.textContent = `${book.title}`;
-    bookCover.appendChild(title);
 
+    let authorContainer = document.createElement('div');
     let author = document.createElement('p');
+    let bookDate = document.createElement('p');
+    authorContainer.classList.add('author-container');
     author.classList.add('author');
+    bookDate.classList.add('book-date');
+    bookDate.textContent = `| ${day} ${month} ${year}`;
     author.textContent = `by ${book.author}`;
 
     let bookStatusCtn = document.createElement('div');
@@ -192,6 +181,17 @@ function displayBooks() {
       changeReadStatus(index);
     }
 
+    // || Start rating
+    let starsContainer = document.createElement('div');
+    let starsOuter = document.createElement('div');
+    let starsInner = document.createElement('div');
+    let numberRating = document.createElement('div');
+    starsContainer.classList.add('stars-container');
+    starsOuter.classList.add('stars-outer');
+    starsInner.classList.add('stars-inner');
+    numberRating.classList.add('number-rating');
+    numberRating.textContent = book.rating;
+
     let removeBookBtn = document.createElement('button');
     removeBookBtn.textContent = `Delete`;
     removeBookBtn.type = 'button';
@@ -203,25 +203,45 @@ function displayBooks() {
       deleteBookModal.classList.add('show');
       deleteBookModal.classList.add('fade-in');
       deleteButton.setAttribute('data-index', index);
+      bookTitle.textContent = `${book.title}`;
     }
-    /* removeBookBtn.onclick = function () {
-      removeBook(index)
-    } */
 
-    bookCover.append(author, bookStatusCtn, removeBookBtn);
+    //appending
+    authorContainer.append(author, bookDate)
+
+    starsContainer.append(starsOuter, numberRating)
+    starsOuter.appendChild(starsInner);
+
+    bookCover.append(title, authorContainer, bookStatusCtn, starsContainer, removeBookBtn);
     bookStatusCtn.append(bookStatus, changeBookStatus);
 
     bookShelf.appendChild(bookCover);
+    
+   
+
+    // calculate star rating percentage for this book
+  const starPercentage = (book.rating / starsTotal) * 100;
+  const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
+
+  if(starsInner) {
+    starsInner.style.width = starPercentageRounded;
+  }
+
+  
   })
 }
 
-function removeBook(index) {
+
+// delete book
+function deleteBook(index) {
 
   myLibrary.splice(index, 1);
   displayBooks();
 
 }
 
-
-/* || modal to delere the book */
-
+/* Getting the date of added book */;
+let date = new Date();
+let day = date.getDate();
+let month = date.getMonth() + 1;
+let year = date.getFullYear();
