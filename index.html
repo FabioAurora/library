@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Library</title>
 
+ <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,7 +48,7 @@
             </div>
             <div class="form__group">
               <label for="author">Author</label>
-              <input type="text" id="author" required>
+              <input type="text" id="author" required autocomplete="off">
             </div>
             <div class="form__group">
               <label for="status">Book Status</label>
@@ -110,9 +112,14 @@
   </main>
 
   <footer class="footer">
-    <div class="footer__content center">
-      <p>This will be the footer</p>
-    </div>
+    <p>
+      Copyright ©
+      <span id="date"></span>
+      @fabioauroradev
+    </p>
+    <a href="https://github.com/FabioAurora" target="_blank">
+      <i class="fa-brands fa-github"></i>
+    </a>
   </footer>
 </body>
 
