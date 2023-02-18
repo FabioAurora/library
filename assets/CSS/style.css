@@ -316,7 +316,7 @@ select {
 .bookshelf-ctn {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   max-width: 100%;
 }
 
@@ -325,7 +325,7 @@ select {
   background: rgb(31 31 71 / .5);
   padding: 1rem 1rem 1.5rem 1rem;
   border-radius: 10px;
-  max-width: 240px;
+  /* max-width: 240px; */
   transform: perspective(588px);
   transform-style: preserve-3d;
   transition: transform 500ms cubic-bezier(.165, .84, .44, 1), -webkit-transform 500ms cubic-bezier(.165, .84, .44, 1);
@@ -351,6 +351,7 @@ select {
 
 .author-container {
   display: flex;
+  align-items: center;
   gap: 1rem;
 }
 .author, .book-date {
@@ -358,10 +359,17 @@ select {
   font-weight: 700;
   color: var(--accent-clr-grey);
 }
+.author {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
 
 .book-date {
   border-left: 1px solid;
   padding-left: .5rem;
+  width: 120px;
 }
 
 .btn {
@@ -399,7 +407,7 @@ select {
   flex-direction: row-reverse;
   justify-content: start;
   gap: .5rem;
-  margin-bottom: .8rem;
+  margin-bottom: 1rem;
 }
 .stars-outer {
   position: relative;

@@ -153,18 +153,20 @@ function displayBooks() {
     bookCover.classList.add('book')
     bookCover.setAttribute('data-index', index); // conecting the DOM elements with the actual book with data-attributes
 
-    // Book elements
+    // Book form  elements
     let title = document.createElement('h2');
     title.textContent = `${book.title}`;
 
+    // author element
     let authorContainer = document.createElement('div');
     let author = document.createElement('p');
-    let bookDate = document.createElement('p');
     authorContainer.classList.add('author-container');
     author.classList.add('author');
-    bookDate.classList.add('book-date');
-    bookDate.textContent = `| ${day} ${month} ${year}`;
     author.textContent = `by ${book.author}`;
+
+    let bookDate = document.createElement('p');
+    bookDate.classList.add('book-date');
+    bookDate.textContent = `${day} ${month} ${year}`;
 
     let bookStatusCtn = document.createElement('div');
     bookStatusCtn.classList.add('status__group');
