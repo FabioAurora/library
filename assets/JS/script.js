@@ -63,6 +63,7 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   addBookToLibrary();
   hideModal();
+  displayBooks();
   reset.formReset();
 })
 
@@ -72,6 +73,12 @@ form.addEventListener('submit', (e) => {
 // will store the book objects
 let myLibrary = [];
 
+if (localStorage.getItem('myLibrary')) {
+  myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+} else {
+  myLibrary = [];
+}
+
 // object constructor for the books
 function Book(title, author, status, rating) {
   this.title = title;
@@ -80,9 +87,6 @@ function Book(title, author, status, rating) {
   this.rating = rating
 }
 
-Book.prototype.toggleRead = function () {
-  this.status = this.status === 'reading' ? 'finished' : 'reading';
-}
 // reseting the form inputs after submit
 Book.prototype.formReset = function (title) {
   titleInput.value = '';
@@ -93,7 +97,7 @@ Book.prototype.formReset = function (title) {
 
 let reset = Object.create(Book.prototype);
 
-
+let livro = new Book()
 
 function addBookToLibrary() {
   let title = titleInput.value;
@@ -103,13 +107,10 @@ function addBookToLibrary() {
   let newBook = new Book(title, author, status, rating);
 
   myLibrary.push(newBook);
+  updateLocalStorage();
   displayBooks();
 }
 
-function changeReadStatus(index) {
-  myLibrary[index].toggleRead();
-  displayBooks();
-}
 
 /* ******************************************************************* */
 
@@ -152,11 +153,12 @@ const starsTotal = 5;
 const bookTitle = document.querySelector('.book-title');
 
 function displayBooks() {
+  checkLocalStorage();
   let bookShelf = document.querySelector('.bookshelf-ctn ');
   bookShelf.textContent = '';
 
-  myLibrary.forEach((book, index) => {
 
+  myLibrary.forEach((book, index) => {
     let bookCover = document.createElement('div');
     bookCover.classList.add('book')
     bookCover.setAttribute('data-index', index); // conecting the DOM elements with the actual book with data-attributes
@@ -191,7 +193,9 @@ function displayBooks() {
     changeBookStatus.type = 'button';
     changeBookStatus.classList.add('btn');
     changeBookStatus.onclick = function () {
-      changeReadStatus(index);
+      myLibrary[index].status = myLibrary[index].status === 'reading' ? 'finished' : 'reading';
+      updateLocalStorage()
+      displayBooks()
     }
 
     // || Star rating
@@ -245,9 +249,21 @@ function displayBooks() {
 }// displayBooks()
 
 
+// storing data at localStorage
+function updateLocalStorage() {
+  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+
+function checkLocalStorage() {
+  if(localStorage.getItem('myLibrary')) {
+    return myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+  }
+}
+
 // delete book
 function deleteBook(index) {
   myLibrary.splice(index, 1);
+  updateLocalStorage();
   displayBooks();
 }
 
@@ -261,3 +277,5 @@ let year = date.getFullYear();
  /* get date for footer */
  const footerDate = document.querySelector('#date');
  footerDate.textContent = date.getFullYear();
+
+ displayBooks()
