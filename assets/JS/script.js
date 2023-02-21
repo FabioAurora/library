@@ -168,14 +168,14 @@ function displayBooks() {
     let title = document.createElement('h2');
     title.textContent = `${book.title}`;
 
-    // author 
+    // author
     let authorContainer = document.createElement('div');
     let author = document.createElement('p');
     authorContainer.classList.add('author-container');
     author.classList.add('author');
     author.textContent = `by ${book.author}`;
 
-    // date  
+    // date
     let bookDate = document.createElement('p');
     bookDate.classList.add('book-date');
     bookDate.textContent = `${day} ${month} ${year}`;
