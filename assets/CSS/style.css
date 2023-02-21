@@ -51,7 +51,9 @@ a {
   text-decoration: none;
 }
 
-a, button, select {
+a,
+button,
+select {
   cursor: pointer;
   font-family: inherit;
 }
@@ -299,6 +301,7 @@ fieldset {
   background-color: var(--accent-clr-purple);
   text-shadow: none;
 }
+
 .form__button:focus-visible {
   outline: 1px solid var(--accent-clr-green);
   box-shadow: 0 2px 2px 3px var(--accent-clr-purple);
@@ -348,11 +351,14 @@ fieldset {
   align-items: center;
   gap: 1rem;
 }
-.author, .book-date {
+
+.author,
+.book-date {
   font-size: .8rem;
   font-weight: 700;
   color: var(--accent-clr-grey);
 }
+
 .author {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -403,6 +409,7 @@ fieldset {
   gap: .5rem;
   margin-bottom: 1rem;
 }
+
 .stars-outer {
   position: relative;
   display: inline-block;
@@ -447,6 +454,7 @@ fieldset {
   place-content: center;
   width: 100%;
   height: 100%;
+  z-index: 2;
 }
 
 .delete__modal__content {
@@ -496,6 +504,7 @@ fieldset {
   gap: 1rem;
   padding: 1em;
 }
+
 .fa-brands {
   font-size: 1.5rem;
 }
@@ -547,24 +556,24 @@ fieldset {
   .nav__brand-icon {
     width: 64px;
   }
-  
+
   .nav__button-gradient {
     padding: 2px;
     font-size: 1rem;
     margin-right: 1rem;
   }
-  
+
   .nav__button {
     padding: .8em 1.7em;
   }
- 
+
   .modal__content {
     flex-direction: column-reverse;
     border: none;
     border-radius: 0;
     padding: 3rem 3rem;
   }
-  
+
   .modal__left {
     display: none;
   }
@@ -578,12 +587,12 @@ fieldset {
     font-size: 1.5rem;
     background: rgb(255 255 255 / .15);
   }
-  
+
   .close-btn:hover,
   .close-btn:focus {
     color: var(--primary-dark);
   }
-  
+
   .modal__right {
     padding: 1.1rem 2rem;
     border-radius: .313rem;
@@ -594,22 +603,22 @@ fieldset {
     margin-bottom: 1.3rem;
   }
 
-  
+
   .delete__modal__content {
     padding: 3em 1em;
     border-radius: 0;
     font-size: .9rem;
   }
-  
+
   .delete__modal-btns button {
     font-size: 1rem;
   }
-  
+
   .cancel {
     background-color: var(--accent-clr-grey);
     color: var(--primary-dark);
   }
-  
+
   .delete {
     background-color: #ED5E68;
     color: var(--primary-light);
