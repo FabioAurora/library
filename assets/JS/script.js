@@ -73,12 +73,6 @@ form.addEventListener('submit', (e) => {
 // will store the book objects
 let myLibrary = [];
 
-if (localStorage.getItem('myLibrary')) {
-  myLibrary = JSON.parse(localStorage.getItem('myLibrary'));
-} else {
-  myLibrary = [];
-}
-
 // object constructor for the books
 function Book(title, author, status, rating) {
   this.title = title;
@@ -96,8 +90,6 @@ Book.prototype.formReset = function (title) {
 }
 
 let reset = Object.create(Book.prototype);
-
-let livro = new Book()
 
 function addBookToLibrary() {
   let title = titleInput.value;
