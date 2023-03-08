@@ -61,7 +61,7 @@ const form = document.querySelector('form');
 // adding form data
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  addBookToLibrary();
+  addBook.addBookToLibrary();
   hideModal();
   displayBooks();
   reset.formReset();
@@ -72,8 +72,9 @@ form.addEventListener('submit', (e) => {
 /* LIBRARY */
 // will store the book objects
 let myLibrary = [];
-
-// object constructor for the books
+/* **************************** */
+// this constructor was refactored into class
+/* // object constructor for the books
 function Book(title, author, status, rating) {
   this.title = title;
   this.author = author;
@@ -87,11 +88,43 @@ Book.prototype.formReset = function (title) {
   authorInput.value = '';
   statusInput.value = '';
   ratingInput.value = '';
+} */
+/* ******************************* */
+
+// refactor using class
+class Book {
+  constructor(title, author, status, rating) {
+    this.title = title;
+    this.author = author;
+    this.status = status;
+    this.rating = rating;
+  }
+
+  formReset() {
+    titleInput.value = '';
+    authorInput.value = '';
+    statusInput.value = '';
+    ratingInput.value = '';
+  }
+
+  addBookToLibrary() {
+    let title = titleInput.value;
+  let author = authorInput.value;
+  let status = statusInput.value;
+  let rating = ratingInput.value;
+  let newBook = new Book(title, author, status, rating);
+
+  myLibrary.push(newBook);
+  updateLocalStorage();
+  displayBooks();
+  }
 }
 
-let reset = Object.create(Book.prototype);
+let reset = new Book();
+const addBook = new Book();
 
-function addBookToLibrary() {
+// refactored into the Book class
+/* function addBookToLibrary() {
   let title = titleInput.value;
   let author = authorInput.value;
   let status = statusInput.value;
@@ -101,7 +134,7 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
   updateLocalStorage();
   displayBooks();
-}
+} */
 
 
 /* ******************************************************************* */
